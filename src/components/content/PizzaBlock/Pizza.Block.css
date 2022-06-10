@@ -1,0 +1,4 @@
+.pizza-block__selector ul li.disabled {
+    opacity: 0.2;
+    pointer-events:none;
+}

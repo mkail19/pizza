@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 import './App.css';
+import Basket from './components/Basket/Basket';
+import Content from './components/content/Content';
 
-function App() {
+import Header from './components/header/Header';
+import { pizzaBlock, pizzasInBusket, Slider} from './components/Data/Data';
+
+
+
+
+
+function App(){
+
+  const[pizzas, setPizzas]=useState(pizzaBlock)
+  const [pizzasBusket, setPizzasBusket]=useState(pizzasInBusket)
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className="wrapper">
+      <Header />
+      <Routes> 
+        <Route path='/' element={<Content pizzas={pizzas} setPizzas={setPizzas}/>}></Route>
+        <Route path="/basket" element={<Basket pizzasBusket={pizzasBusket} setPizzasBusket={setPizzasBusket}/>} />
+       </Routes>
+    
+   
+  </div>
+  )
 }
-
 export default App;
